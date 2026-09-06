@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Details — Sort & Earn</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =========================================
+           ROOT COLORS
+        ========================================== */
+
+        :root {
+            --ink: #14231B;
+            --kraft: #E7EEDF;
+            --kraft-dim: #D9E5CC;
+            --leaf: #3A7D44;
+            --leaf-deep: #2C5E35;
+            --sage: #8AA679;
+            --compost: #6B4F3B;
+            --credit: #C7F24C;
+            --line: rgba(20, 35, 27, 0.16);
+
+            --paper-shadow:
+                0 30px 60px -25px rgba(20, 35, 27, 0.45);
+        }
+
+
+        /* =========================================
+           GLOBAL
+        ========================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--kraft);
+            color: var(--ink);
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .display {
+            font-family: 'Fraunces', serif;
+            letter-spacing: -0.01em;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================================
+           PAPER GRAIN TEXTURE
+        ========================================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.5;
+            z-index: 0;
+
+            background-image:
+                radial-gradient(
+                    circle at 1px 1px,
+                    rgba(20, 35, 27, 0.06) 1px,
+                    transparent 0
+                );
+
+            background-size: 3px 3px;
+        }
+
+
+        /* =========================================
+           MAIN WRAPPER
+        ========================================== */
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(231, 238, 223, 0.86);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-family: 'Fraunces', serif;
+            font-weight: 800;
+            font-size: 19px;
+        }
+
+        .logo .mark {
+            width: 30px;
+            height: 30px;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--leaf);
+            border-radius: 8px;
+        }
+
+        .logo .mark svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .pickup-id {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: rgba(20, 35, 27, 0.6);
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================== */
+
+        .btn {
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            font-size: 14px;
+
+            padding: 11px 20px;
+            border-radius: 999px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            cursor: pointer;
+            border: 1px solid transparent;
+
+            transition:
+                transform .22s cubic-bezier(.34, 1.56, .64, 1),
+                background .18s ease,
+                box-shadow .22s ease,
+                color .18s ease;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--kraft);
+        }
+
+        .btn-primary:hover {
+            background: var(--leaf-deep);
+            transform: translateY(-3px) scale(1.03);
+
+            box-shadow:
+                0 14px 28px -12px rgba(44, 94, 53, 0.55);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .btn-credit {
+            width: 100%;
+
+            background: var(--credit);
+            color: var(--ink);
+
+            padding: 15px 24px;
+            font-size: 15px;
+
+            margin-top: 24px;
+        }
+
+        .btn-credit:hover {
+            background: #DBFF8A;
+            transform: translateY(-3px) scale(1.02);
+
+            box-shadow:
+                0 18px 30px -15px rgba(58, 125, 68, 0.45);
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================== */
+
+        .payment-hero {
+            position: relative;
+            z-index: 1;
+
+            padding: 70px 0 45px;
+            overflow: hidden;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .blob-one {
+            width: 380px;
+            height: 380px;
+
+            top: -120px;
+            right: -100px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(199, 242, 76, 0.55),
+                    rgba(58, 125, 68, 0.2) 60%,
+                    transparent 75%
+                );
+
+            animation: float-one 12s ease-in-out infinite;
+        }
+
+        .blob-two {
+            width: 280px;
+            height: 280px;
+
+            bottom: -120px;
+            left: -80px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(58, 125, 68, 0.25),
+                    transparent 70%
+                );
+
+            animation: float-two 15s ease-in-out infinite;
+        }
+
+        @keyframes float-one {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-25px, 25px) scale(1.08);
+            }
+        }
+
+        @keyframes float-two {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(20px, -20px);
+            }
+        }
+
+
+        .eyebrow {
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+
+            color: var(--leaf-deep);
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 22px;
+            height: 1px;
+
+            background: var(--leaf-deep);
+        }
+
+        .payment-hero h1 {
+            font-size: clamp(38px, 5vw, 60px);
+            line-height: 1.05;
+            font-weight: 800;
+        }
+
+        .payment-hero h1 em {
+            font-style: italic;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    var(--leaf-deep),
+                    var(--leaf),
+                    #8FCB3E,
+                    var(--credit)
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .payment-hero p {
+            max-width: 620px;
+
+            font-size: 17px;
+            line-height: 1.65;
+
+            color: rgba(20, 35, 27, 0.72);
+
+            margin-top: 18px;
+        }
+
+
+        /* =========================================
+           STATUS BADGE
+        ========================================== */
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-top: 24px;
+
+            padding: 10px 16px;
+
+            background: #E9F4EA;
+            border: 1px solid rgba(58, 125, 68, 0.18);
+
+            border-radius: 999px;
+
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+
+            color: var(--leaf-deep);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+            background: var(--leaf);
+
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0% {
+                box-shadow: 0 0 0 0 rgba(58, 125, 68, 0.45);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(58, 125, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(58, 125, 68, 0);
+            }
+        }
+
+
+        /* =========================================
+           PAYMENT GRID
+        ========================================== */
+
+        .payment-section {
+            position: relative;
+            z-index: 1;
+
+            padding-bottom: 90px;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 28px;
+
+            align-items: start;
+        }
+
+
+        /* =========================================
+           PAYMENT RECEIPT CARD
+        ========================================== */
+
+        .payment-card {
+            background: #F5F9F0;
+
+            border: 1px solid var(--line);
+            border-radius: 22px;
+
+            padding: 34px;
+
+            box-shadow: var(--paper-shadow);
+
+            transition:
+                transform 0.35s ease-out,
+                box-shadow 0.35s ease-out;
+
+            will-change: transform;
+        }
+
+        .payment-card:hover {
+            box-shadow:
+                0 38px 70px -25px rgba(20, 35, 27, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            padding-bottom: 22px;
+            margin-bottom: 8px;
+
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .card-header h2 {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .card-header p {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+
+            margin-top: 6px;
+
+            color: rgba(20, 35, 27, 0.5);
+        }
+
+        .verified-mark {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--leaf);
+            color: white;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 10px 20px -10px rgba(58, 125, 68, 0.55);
+        }
+
+
+        /* =========================================
+           MATERIAL ROWS
+        ========================================== */
+
+        .material-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+
+            align-items: center;
+            gap: 22px;
+
+            padding: 17px 0;
+
+            border-bottom: 1px dotted var(--line);
+        }
+
+        .material-info {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .material-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 11px;
+
+            display: grid;
+            place-items: center;
+
+            font-size: 19px;
+        }
+
+        .paper {
+            background: #E8EEFB;
+        }
+
+        .plastic {
+            background: #FBF0E0;
+        }
+
+        .metal {
+            background: #ECEDEF;
+        }
+
+        .glass {
+            background: #E9F4EA;
+        }
+
+        .material-name {
+            font-family: 'Fraunces', serif;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .material-rate {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+
+            color: rgba(20, 35, 27, 0.55);
+
+            margin-top: 3px;
+        }
+
+        .material-weight {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+
+            color: var(--leaf-deep);
+        }
+
+        .material-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+
+            color: var(--ink);
+        }
+
+
+        /* =========================================
+           TOTAL SECTION
+        ========================================== */
+
+        .payment-total {
+            margin-top: 20px;
+            padding-top: 22px;
+
+            border-top: 1px dashed var(--line);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            color: rgba(20, 35, 27, 0.6);
+        }
+
+        .total-subtext {
+            margin-top: 7px;
+
+            font-size: 12px;
+            color: rgba(20, 35, 27, 0.52);
+        }
+
+        .total-amount {
+            font-family: 'Fraunces', serif;
+            font-size: 32px;
+            font-weight: 900;
+
+            background: var(--credit);
+
+            padding: 7px 18px;
+            border-radius: 8px;
+
+            transform: rotate(-1deg);
+        }
+
+
+        /* =========================================
+           PAYMENT INFO SIDE CARD
+        ========================================== */
+
+        .side-card {
+            background: var(--ink);
+            color: var(--kraft);
+
+            border-radius: 22px;
+            padding: 32px;
+
+            position: sticky;
+            top: 95px;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.35s ease-out,
+                box-shadow 0.35s ease-out;
+
+            will-change: transform;
+        }
+
+        .side-card:hover {
+            box-shadow:
+                0 35px 65px -25px rgba(20, 35, 27, 0.7);
+        }
+
+        .side-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            top: -100px;
+            right: -100px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(199, 242, 76, 0.25),
+                    transparent 70%
+                );
+        }
+
+        .side-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .side-card h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .side-card p {
+            color: rgba(231, 238, 223, 0.7);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           BANK ACCOUNT
+        ========================================== */
+
+        .bank-box {
+            margin-top: 25px;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(231, 238, 223, 0.12);
+        }
+
+        .bank-label {
+            font-family: 'Space Mono', monospace;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            font-size: 10px;
+
+            color: var(--credit);
+        }
+
+        .bank-name {
+            font-family: 'Fraunces', serif;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            margin-top: 10px;
+        }
+
+        .bank-number {
+            font-family: 'Space Mono', monospace;
+
+            font-size: 12px;
+
+            color: rgba(231, 238, 223, 0.62);
+
+            margin-top: 5px;
+        }
+
+
+        /* =========================================
+           PAYMENT TIMELINE
+        ========================================== */
+
+        .timeline {
+            margin-top: 28px;
+
+            border-top:
+                1px solid rgba(231, 238, 223, 0.14);
+
+            padding-top: 22px;
+        }
+
+        .timeline-title {
+            font-family: 'Space Mono', monospace;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+
+            color: rgba(231, 238, 223, 0.5);
+
+            margin-bottom: 18px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 13px;
+
+            position: relative;
+
+            padding-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: "";
+
+            position: absolute;
+
+            width: 1px;
+
+            background:
+                rgba(231, 238, 223, 0.2);
+
+            top: 19px;
+            bottom: 2px;
+
+            left: 7px;
+        }
+
+        .timeline-dot {
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            background: var(--credit);
+
+            flex-shrink: 0;
+
+            margin-top: 2px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-dot.pending {
+            background: transparent;
+            border: 2px solid var(--sage);
+        }
+
+        .timeline-text h3 {
+            font-family: 'Manrope', sans-serif;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 4px;
+        }
+
+        .timeline-text p {
+            font-size: 11px;
+
+            color: rgba(231, 238, 223, 0.55);
+        }
+
+
+        /* =========================================
+           PAYMENT NOTE
+        ========================================== */
+
+        .payment-note {
+            margin-top: 24px;
+
+            display: flex;
+            gap: 11px;
+
+            padding: 14px;
+
+            background: var(--kraft-dim);
+
+            border-radius: 12px;
+
+            font-size: 12px;
+            line-height: 1.55;
+
+            color: rgba(20, 35, 27, 0.68);
+        }
+
+        .payment-note strong {
+            color: var(--ink);
+        }
+
+
+        /* =========================================
+           SUCCESS MODAL
+        ========================================== */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(20, 35, 27, 0.55);
+            backdrop-filter: blur(8px);
+
+            z-index: 999;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .success-modal {
+            width: 100%;
+            max-width: 440px;
+
+            background: #F5F9F0;
+
+            padding: 42px 32px;
+
+            border-radius: 24px;
+
+            text-align: center;
+
+            box-shadow:
+                0 40px 90px rgba(0, 0, 0, 0.25);
+
+            animation:
+                modal-pop .4s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        @keyframes modal-pop {
+
+            from {
+                opacity: 0;
+                transform: scale(.8) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 22px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: var(--leaf);
+            color: white;
+
+            font-size: 34px;
+
+            box-shadow:
+                0 18px 35px -15px rgba(58, 125, 68, .65);
+        }
+
+        .success-modal h2 {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .success-modal p {
+            color: rgba(20, 35, 27, 0.65);
+
+            line-height: 1.6;
+
+            font-size: 14px;
+
+            margin: 14px 0 25px;
+        }
+
+
+        /* =========================================
+           SCROLL REVEAL
+        ========================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media(max-width: 900px) {
+
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .side-card {
+                position: relative;
+                top: 0;
+            }
+
+        }
+
+
+        @media(max-width: 640px) {
+
+            .wrap {
+                padding: 0 20px;
+            }
+
+            .nav {
+                padding: 16px 20px;
+            }
+
+            .pickup-id {
+                display: none;
+            }
+
+            .payment-hero {
+                padding: 55px 0 35px;
+            }
+
+            .payment-card {
+                padding: 24px 20px;
+            }
+
+            .side-card {
+                padding: 26px 22px;
+            }
+
+            .material-row {
+                grid-template-columns: 1fr auto;
+                gap: 12px;
+            }
+
+            .material-weight {
+                display: none;
+            }
+
+            .total-amount {
+                font-size: 24px;
+                padding: 6px 12px;
+            }
+
+            .payment-total {
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <header>
+
+        <div class="nav">
+
+            <a href="#" class="logo">
+
+                <span class="mark">
+
+                    <svg viewBox="0 0 24 24" fill="none">
+
+                        <path
+                            d="M12 3C8 6 6 10 6 13a6 6 0 0012 0c0-3-2-7-6-10z"
+                            fill="#F3EDE0"
+                        />
+
+                    </svg>
+
+                </span>
+
+                Sort & Earn
+
+            </a>
+
+
+            <div class="nav-right">
+
+                <div class="pickup-id">
+                    PICKUP #0142
+                </div>
+
+                <a href="#" class="btn btn-primary">
+                    My Account
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="payment-hero">
+
+        <div class="hero-blob blob-one"></div>
+        <div class="hero-blob blob-two"></div>
+
+
+        <div class="wrap">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    Pickup verified
+                </div>
+
+
+                <h1>
+                    Your waste has been <em>valued.</em>
+                </h1>
+
+
+                <p>
+                    Your segregated materials have been collected,
+                    verified and calculated based on their category
+                    and weight. Review your earnings before your
+                    credits are processed.
+                </p>
+
+
+                <div class="status-badge">
+
+                    <span class="status-dot"></span>
+
+                    PAYMENT READY FOR CREDIT
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PAYMENT SECTION
+    ========================================== -->
+
+    <section class="payment-section">
+
+        <div class="wrap">
+
+            <div class="payment-grid">
+
+
+                <!-- =====================================
+                     LEFT SIDE — PAYMENT BREAKDOWN
+                ====================================== -->
+
+                <div class="payment-card reveal">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Segregation Receipt
+                            </h2>
+
+                            <p>
+                                VERIFIED PICKUP · #0142
+                            </p>
+
+                        </div>
+
+
+                        <div class="verified-mark">
+                            ✓
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PAPER -->
+
+                    <div class="material-row">
+
+                        <div class="material-info">
+
+                            <div class="material-icon paper">
+                                📄
+                            </div>
+
+                            <div>
+
+                                <div class="material-name">
+                                    Paper
+                                </div>
+
+                                <div class="material-rate">
+                                    ₹9.5 / kg
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="material-weight">
+                            2.4 kg
+                        </div>
+
+
+                        <div class="material-amount">
+                            ₹22.80
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PLASTIC -->
+
+                    <div class="material-row">
+
+                        <div class="material-info">
+
+                            <div class="material-icon plastic">
+                                ♻
+                            </div>
+
+                            <div>
+
+                                <div class="material-name">
+                                    Plastic
+                                </div>
+
+                                <div class="material-rate">
+                                    ₹14 / kg
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="material-weight">
+                            1.1 kg
+                        </div>
+
+
+                        <div class="material-amount">
+                            ₹15.40
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- METAL -->
+
+                    <div class="material-row">
+
+                        <div class="material-info">
+
+                            <div class="material-icon metal">
+                                ⚙
+                            </div>
+
+                            <div>
+
+                                <div class="material-name">
+                                    Metal
+                                </div>
+
+                                <div class="material-rate">
+                                    ₹42 / kg
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="material-weight">
+                            0.6 kg
+                        </div>
+
+
+                        <div class="material-amount">
+                            ₹25.20
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- GLASS -->
+
+                    <div class="material-row">
+
+                        <div class="material-info">
+
+                            <div class="material-icon glass">
+                                ◇
+                            </div>
+
+                            <div>
+
+                                <div class="material-name">
+                                    Glass
+                                </div>
+
+                                <div class="material-rate">
+                                    ₹3 / kg
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="material-weight">
+                            1.8 kg
+                        </div>
+
+
+                        <div class="material-amount">
+                            ₹5.40
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- TOTAL -->
+
+                    <div class="payment-total">
+
+                        <div>
+
+                            <div class="total-label">
+                                Total Credits Earned
+                            </div>
+
+                            <div class="total-subtext">
+                                Based on verified material quantity
+                            </div>
+
+                        </div>
+
+
+                        <div class="total-amount">
+                            ₹68.80
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- NOTE -->
+
+                    <div class="payment-note">
+
+                        <span>🌱</span>
+
+                        <div>
+
+                            <strong>Good work.</strong>
+
+                            Your waste was segregated at the source,
+                            reducing contamination and increasing the
+                            amount of material that can be recovered.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     RIGHT SIDE — PAYMENT DETAILS
+                ====================================== -->
+
+                <div class="side-card reveal">
+
+                    <div class="side-card-content">
+
+
+                        <h2>
+                            Ready to credit.
+                        </h2>
+
+
+                        <p>
+                            Your verified reward will be credited to
+                            the registered account below.
+                        </p>
+
+
+
+                        <!-- WALLET -->
+
+                        <div class="bank-box">
+
+                            <div class="bank-label">
+                                Payment destination
+                            </div>
+
+
+                            <div class="bank-name">
+                                Virtual Reward Wallet
+                            </div>
+
+
+                            <div class="bank-number">
+                                USER ID · SE-118042
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- TIMELINE -->
+
+                        <div class="timeline">
+
+                            <div class="timeline-title">
+                                Pickup Progress
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot"></div>
+
+
+                                <div class="timeline-text">
+
+                                    <h3>
+                                        Pickup requested
+                                    </h3>
+
+                                    <p>
+                                        Request successfully registered
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot"></div>
+
+
+                                <div class="timeline-text">
+
+                                    <h3>
+                                        Waste collected
+                                    </h3>
+
+                                    <p>
+                                        Segregated material received
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot"></div>
+
+
+                                <div class="timeline-text">
+
+                                    <h3>
+                                        Payment calculated
+                                    </h3>
+
+                                    <p>
+                                        Material value verified
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot pending"></div>
+
+
+                                <div class="timeline-text">
+
+                                    <h3>
+                                        Credit payment
+                                    </h3>
+
+                                    <p>
+                                        Waiting for confirmation
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- CREDIT BUTTON -->
+
+                        <button
+                            class="btn btn-credit"
+                            id="creditButton"
+                        >
+
+                            Credit ₹68.80 →
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SUCCESS MODAL
+    ========================================== -->
+
+    <div class="modal-overlay" id="successModal">
+
+        <div class="success-modal">
+
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+
+            <h2>
+                Credits Added.
+            </h2>
+
+
+            <p>
+
+                ₹68.80 has successfully been credited to your
+                virtual Sort & Earn wallet.
+
+            </p>
+
+
+            <button
+                class="btn btn-primary"
+                id="closeModal"
+            >
+
+                Back to Dashboard
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* =========================================
+           SCROLL REVEAL ANIMATION
+        ========================================== */
+
+        const prefersReduced =
+            window.matchMedia(
+                '(prefers-reduced-motion: reduce)'
+            ).matches;
+
+
+        const revealElements =
+            document.querySelectorAll('.reveal');
+
+
+        if (prefersReduced) {
+
+            revealElements.forEach(element => {
+                element.classList.add('in');
+            });
+
+        }
+
+        else {
+
+            const observer =
+                new IntersectionObserver(
+                    (entries) => {
+
+                        entries.forEach(entry => {
+
+                            if (entry.isIntersecting) {
+
+                                entry.target
+                                    .classList
+                                    .add('in');
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        });
+
+                    },
+
+                    {
+                        threshold: 0.15,
+                        rootMargin: '0px 0px -40px 0px'
+                    }
+                );
+
+
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+
+        }
+
+
+
+        /* =========================================
+           CURSOR PROXIMITY EFFECT
+        ========================================== */
+
+        const interactiveCards = document.querySelectorAll(
+            '.payment-card, .side-card'
+        );
+
+
+        document.addEventListener('mousemove', (event) => {
+
+            interactiveCards.forEach(card => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                /* Center of the card */
+
+                const cardCenterX =
+                    rect.left + rect.width / 2;
+
+                const cardCenterY =
+                    rect.top + rect.height / 2;
+
+
+                /* Distance from cursor */
+
+                const distanceX =
+                    event.clientX - cardCenterX;
+
+                const distanceY =
+                    event.clientY - cardCenterY;
+
+
+                const distance =
+                    Math.sqrt(
+                        distanceX * distanceX +
+                        distanceY * distanceY
+                    );
+
+
+                /* Activation distance */
+
+                const activationDistance = 350;
+
+
+                /* Maximum card movement */
+
+                const maxMove = 12;
+
+
+                if (
+                    distance < activationDistance
+                    && !prefersReduced
+                ) {
+
+                    /*
+                       Strength becomes weaker as
+                       cursor moves away
+                    */
+
+                    const strength =
+                        1 -
+                        (distance / activationDistance);
+
+
+                    /*
+                       Calculate movement
+                    */
+
+                    const moveX =
+                        (distanceX / activationDistance) *
+                        maxMove *
+                        strength;
+
+
+                    const moveY =
+                        (distanceY / activationDistance) *
+                        maxMove *
+                        strength;
+
+
+                    card.style.transform =
+                        `translate(${moveX}px, ${moveY}px)`;
+
+                }
+
+                else {
+
+                    card.style.transform =
+                        'translate(0px, 0px)';
+
+                }
+
+            });
+
+        });
+
+
+
+        /* =========================================
+           PAYMENT SUCCESS MODAL
+        ========================================== */
+
+        const creditButton =
+            document.getElementById('creditButton');
+
+
+        const successModal =
+            document.getElementById('successModal');
+
+
+        const closeModal =
+            document.getElementById('closeModal');
+
+
+        creditButton.addEventListener('click', () => {
+
+            successModal.classList.add('show');
+
+        });
+
+
+        closeModal.addEventListener('click', () => {
+
+            successModal.classList.remove('show');
+
+        });
+
+
+        /* Close modal when clicking outside */
+
+        successModal.addEventListener(
+            'click',
+            (event) => {
+
+                if (
+                    event.target === successModal
+                ) {
+
+                    successModal.classList.remove(
+                        'show'
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
