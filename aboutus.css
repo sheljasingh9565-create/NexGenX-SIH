@@ -1,0 +1,1960 @@
+/* =========================================
+   WASTE2WORTH — ABOUT US
+   LIGHT GREEN + DARK CARD + SOFT GRADIENT
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   ROOT COLORS
+   ========================================= */
+
+:root {
+    --green: #246b45;
+    --dark-green: #163d2b;
+    --deep-green: #102c1f;
+
+    --light-green: #eaf5ee;
+    --soft-green: #f4faf6;
+    --pale-green: #edf7f1;
+    --mint: #dcefe3;
+
+    --cream: #fbfaf5;
+
+    --text: #1d2b24;
+    --muted: #68756e;
+
+    --border: #dfe8e2;
+
+    --white: #ffffff;
+
+    /* Hover gradient colors */
+    --hover-mint: rgba(214, 239, 222, 0.75);
+    --hover-green: rgba(191, 225, 204, 0.60);
+    --hover-gold: rgba(244, 229, 181, 0.55);
+}
+
+
+/* =========================================
+   BASIC
+   ========================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: var(--cream);
+
+    color: var(--text);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.navbar {
+    height: 76px;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: rgba(251, 250, 245, 0.94);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    backdrop-filter: blur(12px);
+}
+
+
+.logo {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: var(--dark-green);
+}
+
+
+.logo span {
+    color: var(--green);
+
+    font-size: 25px;
+
+    margin-right: 6px;
+}
+
+
+.back-btn {
+    text-decoration: none;
+
+    color: var(--dark-green);
+
+    border: 1px solid var(--border);
+
+    padding: 9px 17px;
+
+    border-radius: 999px;
+
+    background: var(--white);
+
+    transition: all 0.3s ease;
+}
+
+
+.back-btn:hover {
+    background: var(--light-green);
+
+    border-color: #b9d8c4;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.about-hero {
+    max-width: 1200px;
+
+    min-height: 590px;
+
+    margin: auto;
+
+    padding: 90px 6%;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 0.8fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+
+.small-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #163d2b; 
+    margin-bottom: 18px;
+}
+
+.small-title span {
+    font-weight: 900;
+    color:var(--dark-green);
+}
+
+
+.hero-content h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(48px, 6vw, 76px);
+
+    line-height: 0.98;
+
+    font-weight: 400;
+
+    color: var(--dark-green);
+}
+
+
+.hero-content h1 span {
+    display: block;
+
+    font-style: italic;
+
+    color: var(--green);
+}
+
+
+.hero-text {
+    max-width: 680px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+    margin: 28px 0;
+}
+
+
+.primary-btn {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background: var(--dark-green);
+
+    color: white;
+
+    padding: 13px 21px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+}
+
+
+.primary-btn:hover {
+    background: var(--green);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(36, 107, 69, 0.18);
+}
+
+
+/* =========================================
+   HERO STAT CARD
+   ========================================= */
+
+.hero-stat-card {
+    background: var(--dark-green);
+
+    color: white;
+
+    padding: 38px;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(22, 61, 43, 0.15);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.hero-stat-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 25px 60px rgba(36, 107, 69, 0.20);
+}
+
+
+.stat-icon {
+    width: 58px;
+
+    height: 58px;
+
+    display: grid;
+
+    place-items: center;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border-radius: 50%;
+
+    font-size: 27px;
+
+    margin-bottom: 30px;
+}
+
+
+.hero-stat-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 34px;
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    margin-bottom: 15px;
+}
+
+
+.hero-stat-card p {
+    color: #d6e7dc;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   COMMON SECTIONS
+   ========================================= */
+
+.what-section,
+.different-section,
+.purpose-section,
+.impact-section {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 100px 6%;
+}
+
+
+.section-heading {
+    max-width: 780px;
+
+    margin-bottom: 50px;
+}
+
+
+.section-heading h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-weight: 400;
+
+    font-size: clamp(38px, 5vw, 55px);
+
+    line-height: 1.05;
+
+    color: var(--dark-green);
+
+    margin-bottom: 20px;
+}
+
+
+.section-description {
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   JOURNEY CARDS
+   ========================================= */
+
+.journey {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 12px;
+}
+
+
+.journey-card {
+    flex: 1;
+
+    position: relative;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.journey-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #bddac7;
+
+    box-shadow:
+        0 15px 35px rgba(36, 107, 69, 0.10);
+}
+
+
+.journey-card > span {
+    position: absolute;
+
+    right: 20px;
+
+    top: 18px;
+
+    font-size: 12px;
+
+    color: #9aa79f;
+}
+
+
+.journey-icon {
+    font-size: 29px;
+
+    margin-bottom: 18px;
+}
+
+
+.journey-card h3 {
+    color: var(--dark-green);
+
+    margin-bottom: 8px;
+}
+
+
+.journey-card p {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.journey-arrow {
+    display: flex;
+
+    align-items: center;
+
+    color: var(--green);
+
+    font-size: 22px;
+}
+
+
+/* =========================================
+   DIFFERENT SECTION
+   ========================================= */
+
+.different-section {
+    max-width: none;
+
+    padding-left: max(6%, calc((100% - 1200px) / 2));
+
+    padding-right: max(6%, calc((100% - 1200px) / 2));
+
+    background: var(--soft-green);
+}
+
+
+.difference-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   DARK GREEN DIFFERENCE CARDS
+   ========================================= */
+
+.difference-card {
+    background: var(--dark-green);
+
+    border: 1px solid #2d6348;
+
+    border-radius: 20px;
+
+    padding: 28px;
+
+    position: relative;
+
+    min-height: 285px;
+
+    color: white;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* =========================================
+   SOFT MOVING GRADIENT
+   ========================================= */
+
+.difference-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -45%;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 30%,
+            var(--hover-mint),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            var(--hover-gold),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 60% 20%,
+            var(--hover-green),
+            transparent 35%
+        );
+
+    opacity: 0;
+
+    transform:
+        translate(-10%, 10%)
+        scale(0.9);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.8s ease;
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   CARD HOVER
+   ========================================= */
+
+.difference-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #b8d7c2;
+
+    box-shadow:
+        0 20px 45px rgba(36, 107, 69, 0.18);
+}
+
+
+.difference-card:hover::before {
+    opacity: 1;
+
+    transform:
+        translate(8%, -8%)
+        scale(1.15);
+
+    animation:
+        softGradientMove 5s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   GRADIENT MOTION
+   ========================================= */
+
+@keyframes softGradientMove {
+
+    0% {
+        transform:
+            translate(8%, -8%)
+            scale(1.15);
+    }
+
+    50% {
+        transform:
+            translate(-3%, 5%)
+            scale(1.2);
+    }
+
+    100% {
+        transform:
+            translate(10%, 2%)
+            scale(1.15);
+    }
+}
+
+
+/* =========================================
+   DIFFERENCE CARD CONTENT
+   ========================================= */
+
+.difference-card h3 {
+    color: #f3f8f4;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.difference-card p {
+    color: #c8d9ce;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.difference-icon {
+    font-size: 30px;
+
+    margin: 25px 0 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.card-number {
+    position: absolute;
+
+    right: 20px;
+
+    top: 17px;
+
+    color: #a7c5b2;
+
+    font-size: 12px;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   MISSION / VISION / GOAL
+   ========================================= */
+
+.purpose-section {
+    max-width: none;
+
+    background: var(--cream);
+
+    padding-left: max(6%, calc((100% - 1200px) / 2));
+
+    padding-right: max(6%, calc((100% - 1200px) / 2));
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+
+/* Soft background glow */
+
+.purpose-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(169, 215, 187, 0.30) 0%,
+            rgba(220, 239, 227, 0.18) 35%,
+            rgba(251, 250, 245, 0) 72%
+        );
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: -1;
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+
+/* Background becomes slightly brighter
+   when hovering any purpose card */
+
+.purpose-section:has(.purpose-card:hover)::before {
+    opacity: 0.9;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+}
+
+
+.purpose-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+    position: relative;
+}
+
+
+/* =========================================
+   PURPOSE CARDS
+   ========================================= */
+/* =========================================
+   MISSION / VISION / GOAL
+   ========================================= */
+
+.purpose-section {
+    max-width: none;
+
+    background: var(--cream);
+
+    padding-left: max(6%, calc((100% - 1200px) / 2));
+    padding-right: max(6%, calc((100% - 1200px) / 2));
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+
+/* Soft light green background glow */
+
+.purpose-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(169, 215, 187, 0.30) 0%,
+            rgba(220, 239, 227, 0.18) 35%,
+            rgba(251, 250, 245, 0) 72%
+        );
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: -1;
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+
+/* Background glow increases on hover */
+
+.purpose-section:has(.purpose-card:hover)::before {
+
+    opacity: 0.9;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+}
+
+
+/* =========================================
+   PURPOSE GRID
+   ========================================= */
+
+.purpose-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+    position: relative;
+}
+
+
+/* =========================================
+   PURPOSE CARD
+   ========================================= */
+
+.purpose-card {
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    padding: 34px;
+
+    min-height: 450px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease,
+        background 0.5s ease;
+}
+
+
+/* =========================================
+   SOFT MOVING GRADIENT
+   ========================================= */
+
+.purpose-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -40%;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 25%,
+            rgba(119, 195, 148, 0.35),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(220, 239, 227, 0.25),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 60% 20%,
+            rgba(244, 229, 181, 0.16),
+            transparent 35%
+        );
+
+    opacity: 0;
+
+    transform:
+        translate(-10%, 10%)
+        scale(0.9);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.7s ease;
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   HOVER — DARK GREEN
+   ========================================= */
+
+.purpose-card:hover {
+
+    background:
+        linear-gradient(
+            145deg,
+            #163d2b,
+            #1d5138
+        );
+
+    transform: translateY(-10px);
+
+    border-color: #79a98b;
+
+    box-shadow:
+        0 25px 55px rgba(22, 61, 43, 0.22);
+}
+
+
+.purpose-card:hover::before {
+
+    opacity: 1;
+
+    transform:
+        translate(8%, -8%)
+        scale(1.15);
+
+    animation:
+        purposeGradientMove 5s ease-in-out infinite alternate;
+}
+
+
+/* =========================================
+   GRADIENT MOTION
+   ========================================= */
+
+@keyframes purposeGradientMove {
+
+    0% {
+        transform:
+            translate(8%, -8%)
+            scale(1.15);
+    }
+
+    50% {
+        transform:
+            translate(-4%, 5%)
+            scale(1.2);
+    }
+
+    100% {
+        transform:
+            translate(10%, 2%)
+            scale(1.15);
+    }
+}
+
+
+/* =========================================
+   PURPOSE ICON
+   ========================================= */
+
+.purpose-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    background: var(--light-green);
+
+    color: var(--green);
+
+    font-size: 27px;
+
+    margin-bottom: 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* Icon on hover */
+
+.purpose-card:hover .purpose-icon {
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #d8eee0;
+
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+
+/* =========================================
+   LABEL
+   ========================================= */
+
+.purpose-label {
+
+    color: var(--green);
+
+    letter-spacing: 2px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition: color 0.4s ease;
+}
+
+
+/* Label hover */
+
+.purpose-card:hover .purpose-label {
+
+    color: #b8dec5;
+}
+
+
+/* =========================================
+   HEADING
+   ========================================= */
+
+.purpose-card h3 {
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-weight: 400;
+
+    font-size: 28px;
+
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+
+    color: var(--dark-green);
+
+    position: relative;
+
+    z-index: 2;
+
+    transition: color 0.4s ease;
+}
+
+
+/* Heading hover */
+
+.purpose-card:hover h3 {
+
+    color: #f3f8f5;
+}
+
+
+/* =========================================
+   DESCRIPTION
+   ========================================= */
+
+.purpose-card > p:last-child {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    position: relative;
+
+    z-index: 2;
+
+    transition: color 0.4s ease;
+}
+
+
+/* Description hover */
+
+.purpose-card:hover > p:last-child {
+
+    color: #d2e3d9;
+}
+
+
+
+/* =========================================
+   COMPARISON SECTION
+   ========================================= */
+
+.impact-section {
+    max-width: none;
+
+    background: var(--soft-green);
+
+    padding-left: max(6%, calc((100% - 1200px) / 2));
+
+    padding-right: max(6%, calc((100% - 1200px) / 2));
+}
+
+
+.comparison {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+.comparison-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 22px;
+
+    padding: 32px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.comparison-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(36, 107, 69, 0.10);
+}
+
+
+.comparison-card.waste2worth-flow {
+    border: 1px solid #b9d8c4;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f2f9f4
+        );
+}
+
+
+.comparison-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+.comparison-title span {
+    width: 34px;
+
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--light-green);
+
+    color: var(--green);
+
+    font-weight: 700;
+}
+
+
+.comparison-title h3 {
+    color: var(--dark-green);
+}
+
+
+/* =========================================
+   FLOW
+   ========================================= */
+
+.flow {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.flow div {
+    width: 80%;
+
+    text-align: center;
+
+    padding: 11px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #fafcfb;
+
+    color: var(--dark-green);
+
+    font-size: 14px;
+}
+
+
+.flow span {
+    color: #789386;
+}
+
+
+.flow .end-point {
+    background: var(--light-green);
+
+    border-color: #c6dfcf;
+
+    font-weight: 700;
+
+    color: var(--green);
+}
+
+
+.comparison-card > p {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CTA
+   ========================================= */
+
+.cta-section {
+    max-width: 1100px;
+
+    margin: 80px auto;
+
+    padding: 55px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #163d2b,
+            #246b45
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    box-shadow:
+        0 20px 50px rgba(22, 61, 43, 0.15);
+}
+
+
+.cta-section h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(35px, 5vw, 52px);
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    margin-bottom: 12px;
+}
+
+
+.cta-section p:last-child {
+    color: #d3e5da;
+}
+
+
+.cta-section .small-title {
+    color: #bce0c8;
+}
+
+
+.cta-section .primary-btn {
+    background: white;
+
+    color: var(--dark-green);
+
+    white-space: nowrap;
+}
+
+
+.cta-section .primary-btn:hover {
+    background: var(--light-green);
+
+    color: var(--green);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer {
+    padding: 30px 6%;
+
+    border-top: 1px solid var(--border);
+
+    background: #f5f8f5;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #829087;
+
+    font-size: 13px;
+}
+
+
+.footer p {
+    font-weight: 700;
+
+    color: var(--dark-green);
+}
+
+
+/* =========================================
+   SCROLL REVEAL
+   ========================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 950px) {
+
+    .about-hero {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+
+    .difference-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .purpose-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .journey {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .journey-arrow {
+        display: none;
+    }
+
+
+    .comparison {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+
+    .about-hero,
+    .what-section,
+    .different-section,
+    .purpose-section,
+    .impact-section {
+        padding-top: 65px;
+
+        padding-bottom: 65px;
+    }
+
+
+    .about-hero {
+        min-height: auto;
+    }
+
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+
+    .hero-stat-card {
+        padding: 28px;
+    }
+
+
+    .difference-grid,
+    .journey {
+        grid-template-columns: 1fr;
+    }
+
+
+    .comparison-card {
+        padding: 24px 18px;
+    }
+
+
+    .flow div {
+        width: 95%;
+    }
+
+
+    .cta-section {
+        margin: 45px 5%;
+
+        padding: 35px 25px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .footer {
+        flex-direction: column;
+    }
+
+
+    .back-btn {
+        padding: 7px 12px;
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        scroll-behavior: auto !important;
+    }
+
+
+    .difference-card::before {
+        animation: none !important;
+    }
+
+
+    .difference-card,
+    .purpose-card,
+    .journey-card,
+    .comparison-card,
+    .hero-stat-card {
+        transition: none;
+    }
+
+}
+/* =========================================
+   MINIMIZING LANDFILL
+========================================= */
+
+.landfill-section {
+    width: 100%;
+    min-height: 650px;
+
+    padding: 90px 6%;
+
+    background: var(--dark-green);
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+
+    align-items: center;
+    gap: 70px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.landfill-content {
+    max-width: 620px;
+}
+
+
+.landfill-label {
+    color: var(--light-green);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 14px;
+}
+
+
+.landfill-content h1 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 46px;
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    color: var(--cream);
+
+    margin-bottom: 22px;
+}
+
+
+.landfill-content h1 span {
+    color: var(--yellow);
+}
+
+
+/* =========================================
+   INTRO TEXT
+========================================= */
+
+.landfill-intro {
+    color: #d4e3da;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    max-width: 570px;
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================================
+   LANDFILL POINTS
+========================================= */
+
+.landfill-points {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+
+/* =========================================
+   POINT CARD
+========================================= */
+
+.landfill-points .point {
+    display: grid;
+
+    grid-template-columns: 45px 1fr;
+
+    align-items: start;
+
+    gap: 15px;
+
+    padding: 17px 18px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border: 1px solid rgba(234, 245, 238, 0.13);
+
+    border-radius: 15px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.point-number {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    color: var(--cream);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================
+   POINT HEADING
+========================================= */
+
+.landfill-points .point h3 {
+    color: var(--light-green);
+
+    font-size: 17px;
+
+    margin-bottom: 5px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   POINT DESCRIPTION
+========================================= */
+
+.landfill-points .point p {
+    color: #c5d5cb;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   POINT HOVER
+========================================= */
+
+.landfill-points .point:hover {
+    transform: translateX(7px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(155, 214, 168, 0.10),
+            rgba(244, 229, 181, 0.06)
+        );
+
+    border-color: rgba(155, 214, 168, 0.35);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.landfill-points .point:hover .point-number {
+    background: var(--yellow);
+
+    color: var(--dark-green);
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   RIGHT IMAGE
+========================================= */
+
+.landfill-image {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.image-wrapper {
+    width: 100%;
+
+    max-width: 720px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(234, 245, 238, 0.18);
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.28);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.image-wrapper img {
+    width: 100%;
+
+    height: 500px;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease;
+}
+
+
+/* =========================================
+   IMAGE HOVER
+========================================= */
+
+.image-wrapper:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--light-green);
+
+    box-shadow:
+        0 30px 65px rgba(0, 0, 0, 0.35);
+}
+
+
+.image-wrapper:hover img {
+    transform: scale(1.05);
+
+    filter: saturate(1.05);
+}
+
+
+/* =========================================
+   IMAGE CAPTION
+========================================= */
+
+.image-caption {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 17px;
+
+    border-radius: 12px;
+
+    background: rgba(22, 61, 43, 0.88);
+
+    backdrop-filter: blur(10px);
+
+    color: var(--cream);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.image-caption span {
+    color: var(--yellow);
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+    .landfill-section {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+        padding: 80px 6%;
+    }
+
+
+    .landfill-content {
+        max-width: 800px;
+    }
+
+
+    .landfill-image {
+        max-width: 850px;
+
+        margin: auto;
+    }
+
+
+    .image-wrapper {
+        max-width: 850px;
+    }
+
+
+    .image-wrapper img {
+        height: 450px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .landfill-section {
+        padding: 65px 5%;
+
+        gap: 35px;
+    }
+
+
+    .landfill-content h1 {
+        font-size: 36px;
+    }
+
+
+    .landfill-intro {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    .landfill-points {
+        gap: 10px;
+    }
+
+
+    .landfill-points .point {
+        grid-template-columns: 38px 1fr;
+
+        gap: 12px;
+
+        padding: 15px;
+    }
+
+
+    .point-number {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .landfill-points .point h3 {
+        font-size: 15px;
+    }
+
+
+    .landfill-points .point p {
+        font-size: 13px;
+    }
+
+
+    .image-wrapper {
+        border-radius: 20px;
+    }
+
+
+    .image-wrapper img {
+        height: 300px;
+    }
+
+
+    .image-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+
+        font-size: 11px;
+    }
+}
