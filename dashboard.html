@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Waste2Worth | Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <div class="logo-mark">♻</div>
+            <span>Waste2Worth</span>
+        </div>
+
+
+        <!-- SIDEBAR NAVIGATION -->
+        <nav class="sidebar-nav">
+
+            <!-- DASHBOARD -->
+            <a href="dashboard.html" class="nav-item active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <!-- MY PICKUPS -->
+            <a href="#" class="nav-item" id="pickupLink">
+                <span>♻</span>
+                My Pickups
+            </a>
+
+
+            <!-- PAYMENT -->
+            <a href="PAYMENT.html" class="nav-item" id="paymentLink">
+                <span>💳</span>
+                Payment
+            </a>
+
+
+            <!-- ABOUT US -->
+            <a href="aboutus.html" class="nav-item" id="aboutLink">
+                <span>ℹ</span>
+                About Us
+            </a>
+
+
+            <!-- SETTINGS -->
+            <a href="#" class="nav-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <!-- ================= SIDEBAR BOTTOM ================= -->
+
+        <div class="sidebar-bottom">
+
+            <!-- HELP BOX -->
+            <div class="help-box">
+
+                <h4>Need Help?</h4>
+
+                <p>
+                    Learn how Waste2Worth works.
+                </p>
+
+                <button id="helpBtn">
+                    Learn More
+                </button>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+            <a href="support.html" class="nav-item" id="supportLink">
+                <span>☎</span>
+                Support
+            </a>
+
+
+            <!-- LOGOUT -->
+            <button class="logout-btn" id="logoutBtn">
+                ↪ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOP BAR ================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="small-heading">
+                    WASTE2WORTH
+                </p>
+
+                <h1>
+                    Good evening, User 👋
+                </h1>
+
+            </div>
+
+
+            <!-- PROFILE -->
+            <div class="profile">
+
+                <!-- NOTIFICATION -->
+                <div class="notification">
+                    🔔
+                    <span class="notification-dot"></span>
+                </div>
+
+
+                <!-- AVATAR -->
+                <div class="avatar">
+                    U
+                </div>
+
+
+                <!-- PROFILE INFO -->
+                <div class="profile-info">
+
+                    <strong>
+                        User
+                    </strong>
+
+                    <span>
+                        Household
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- TOTAL CREDITS -->
+            <div class="stat-card green-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Total Credits
+                    </span>
+
+                    <span class="stat-icon">
+                        ₹
+                    </span>
+
+                </div>
+
+                <h2 id="totalCredits">
+                    ₹1,240
+                </h2>
+
+                <p class="positive">
+                    ↑ 12.5% this month
+                </p>
+
+            </div>
+
+
+            <!-- WASTE RECYCLED -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Waste Recycled
+                    </span>
+
+                    <span class="stat-icon">
+                        ♻
+                    </span>
+
+                </div>
+
+                <h2 id="wasteRecycled">
+                    42.8 kg
+                </h2>
+
+                <p>
+                    +8.2 kg this month
+                </p>
+
+            </div>
+
+
+            <!-- PICKUPS COMPLETED -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Pickups Completed
+                    </span>
+
+                    <span class="stat-icon">
+                        ✓
+                    </span>
+
+                </div>
+
+                <h2 id="pickupCount">
+                    14
+                </h2>
+
+                <p>
+                    2 pickups this month
+                </p>
+
+            </div>
+
+
+            <!-- ENVIRONMENTAL IMPACT -->
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Environmental Impact
+                    </span>
+
+                    <span class="stat-icon">
+                        🌱
+                    </span>
+
+                </div>
+
+                <h2>
+                    68.4 kg
+                </h2>
+
+                <p>
+                    Estimated landfill avoided
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PICKUP SECTION ================= -->
+
+        <section class="dashboard-grid single-card">
+
+            <div class="dashboard-card pickup-card">
+
+
+                <!-- CARD HEADER -->
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-label">
+                            NEXT PICKUP
+                        </p>
+
+                        <h2>
+                            Schedule a Pickup
+                        </h2>
+
+                    </div>
+
+
+                    <span class="status upcoming">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <!-- PICKUP DETAILS -->
+                <div class="pickup-details">
+
+                    <div class="pickup-icon">
+                        🚚
+                    </div>
+
+                    <div>
+
+                        <h3 id="pickupDate">
+                            Saturday, 12 September
+                        </h3>
+
+                        <p>
+                            10:00 AM – 12:00 PM
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PICKUP INFORMATION -->
+                <div class="pickup-info">
+
+                    <div>
+
+                        <span>
+                            Waste ready
+                        </span>
+
+                        <strong>
+                            4.8 kg
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Estimated credits
+                        </span>
+
+                        <strong>
+                            ₹74
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SCHEDULE PICKUP -->
+                <!-- DIRECTLY CONNECTED TO index.html -->
+                <a href="index.html" class="primary-btn" id="scheduleBtn">
+                    Schedule a Pickup →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WASTE CATEGORIES ================= -->
+
+        <section class="section-block">
+
+
+            <!-- SECTION TITLE -->
+            <div class="section-title">
+
+                <div>
+
+                    <p class="card-label">
+                        WASTE BREAKDOWN
+                    </p>
+
+                    <h2>
+                        Your Waste Categories
+                    </h2>
+
+                </div>
+
+
+                <button class="text-btn">
+                    View Details →
+                </button>
+
+            </div>
+
+
+            <!-- WASTE GRID -->
+            <div class="waste-grid">
+
+
+                <!-- PAPER -->
+                <div class="waste-card paper">
+
+                    <div class="waste-icon">
+                        📄
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Paper
+                        </h3>
+
+                        <p>
+                            12.4 kg collected
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹118
+                    </strong>
+
+                </div>
+
+
+                <!-- PLASTIC -->
+                <div class="waste-card plastic">
+
+                    <div class="waste-icon">
+                        🧴
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Plastic
+                        </h3>
+
+                        <p>
+                            15.2 kg collected
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹213
+                    </strong>
+
+                </div>
+
+
+                <!-- METAL -->
+                <div class="waste-card metal">
+
+                    <div class="waste-icon">
+                        🔩
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Metal
+                        </h3>
+
+                        <p>
+                            8.6 kg collected
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹361
+                    </strong>
+
+                </div>
+
+
+                <!-- GLASS -->
+                <div class="waste-card glass">
+
+                    <div class="waste-icon">
+                        🫙
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Glass
+                        </h3>
+
+                        <p>
+                            6.6 kg collected
+                        </p>
+
+                    </div>
+
+                    <strong>
+                        ₹20
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECENT ACTIVITY ================= -->
+
+        <section class="section-block">
+
+
+            <!-- SECTION TITLE -->
+            <div class="section-title">
+
+                <div>
+
+                    <p class="card-label">
+                        ACTIVITY
+                    </p>
+
+                    <h2>
+                        Recent Pickups
+                    </h2>
+
+                </div>
+
+
+                <button class="text-btn">
+                    View All →
+                </button>
+
+            </div>
+
+
+            <!-- ACTIVITY CARD -->
+            <div class="activity-card">
+
+
+                <!-- PICKUP 0142 -->
+                <div class="activity-row">
+
+                    <div class="activity-icon">
+                        ♻
+                    </div>
+
+                    <div class="activity-info">
+
+                        <h3>
+                            Pickup #0142
+                        </h3>
+
+                        <p>
+                            Paper · Plastic · Metal · Glass
+                        </p>
+
+                    </div>
+
+                    <div class="activity-weight">
+
+                        <strong>
+                            4.8 kg
+                        </strong>
+
+                        <span>
+                            12 Sept
+                        </span>
+
+                    </div>
+
+                    <div class="activity-credit">
+                        +₹74
+                    </div>
+
+                </div>
+
+
+                <!-- PICKUP 0138 -->
+                <div class="activity-row">
+
+                    <div class="activity-icon">
+                        ♻
+                    </div>
+
+                    <div class="activity-info">
+
+                        <h3>
+                            Pickup #0138
+                        </h3>
+
+                        <p>
+                            Paper · Plastic
+                        </p>
+
+                    </div>
+
+                    <div class="activity-weight">
+
+                        <strong>
+                            3.2 kg
+                        </strong>
+
+                        <span>
+                            5 Sept
+                        </span>
+
+                    </div>
+
+                    <div class="activity-credit">
+                        +₹52
+                    </div>
+
+                </div>
+
+
+                <!-- PICKUP 0131 -->
+                <div class="activity-row">
+
+                    <div class="activity-icon">
+                        ♻
+                    </div>
+
+                    <div class="activity-info">
+
+                        <h3>
+                            Pickup #0131
+                        </h3>
+
+                        <p>
+                            Metal · Glass
+                        </p>
+
+                    </div>
+
+                    <div class="activity-weight">
+
+                        <strong>
+                            2.7 kg
+                        </strong>
+
+                        <span>
+                            28 Aug
+                        </span>
+
+                    </div>
+
+                    <div class="activity-credit">
+                        +₹49
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+                © 2026 Waste2Worth · Turning waste into worth.
+            </p>
+
+            <div>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="support.html">
+                    Help
+                </a>
+
+                <a href="support.html">
+                    Contact
+                </a>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
