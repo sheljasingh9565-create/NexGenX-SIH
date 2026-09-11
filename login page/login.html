@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waste2Worth | Login</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --green:#073c27;
+  --green2:#0d5135;
+  --dark:#10251b;
+  --paper:#f4f6e9;
+  --line:rgba(16,37,27,.22);
+  --lime:#c8ff38;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+}
+
+body{
+  overflow:hidden;
+  position:relative;
+  background:#edf4df;
+  font-family:Manrope,Arial,sans-serif;
+  color:var(--dark);
+}
+
+
+/* =========================================================
+   FULL BACKGROUND ARTWORK
+   ========================================================= */
+
+.background-art{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  z-index:0;
+  user-select:none;
+  pointer-events:none;
+}
+
+.page-grain{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.12;
+
+  background-image:
+    radial-gradient(
+      rgba(16,37,27,.18) .65px,
+      transparent .7px
+    );
+
+  background-size:4px 4px;
+}
+
+
+/* =========================================================
+   CENTRAL LOGIN CARD
+   - 35% SCREEN WIDTH
+   - SLIGHTLY LOWER THAN THE ORIGINAL
+   - NO MAGNETIC EFFECT
+   ========================================================= */
+
+.login-card{
+  position:absolute;
+  z-index:10;
+
+  left:32.5%;
+  top:12%;
+
+  width:35%;
+  height:55%;
+
+  padding:2.4% 5% 2%;
+
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,.72);
+
+  background:
+    radial-gradient(
+      rgba(16,37,27,.055) .65px,
+      transparent .7px
+    ),
+    rgba(244,246,233,.97);
+
+  background-size:4px 4px;
+
+  box-shadow:
+    0 25px 45px -20px rgba(16,37,27,.42),
+    0 1px 0 rgba(255,255,255,.9) inset;
+
+  transform:translate3d(0,0,0);
+
+  transition:box-shadow .25s ease;
+}
+
+
+/* =========================================================
+   W LOGO
+   ========================================================= */
+
+.logo{
+  width:54px;
+  height:54px;
+
+  margin:0 auto;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  background:var(--green);
+  color:#fff;
+
+  box-shadow:
+    0 8px 14px rgba(7,60,39,.16);
+}
+
+.logo span{
+  font:900 30px Fraunces,serif;
+  line-height:1;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand{
+  text-align:center;
+  margin-top:9px;
+}
+
+.brand-name{
+  font:
+    900
+    clamp(25px,3vw,39px)
+    Fraunces,serif;
+
+  letter-spacing:-.05em;
+  line-height:1;
+}
+
+.brand-name .two{
+  color:#168044;
+}
+
+.tagline{
+  margin-top:7px;
+
+  font:
+    700
+    clamp(6px,.7vw,9px)
+    "Space Mono",monospace;
+
+  letter-spacing:.20em;
+  color:rgba(16,37,27,.62);
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.welcome{
+  text-align:center;
+  margin-top:3%;
+}
+
+.welcome h1{
+  font:
+    900
+    clamp(26px,2.9vw,37px)
+    Fraunces,serif;
+
+  line-height:1;
+  letter-spacing:-.04em;
+}
+
+.welcome p{
+  margin:10px auto 0;
+
+  max-width:350px;
+
+  font-size:
+    clamp(9px,1vw,14px);
+
+  line-height:1.45;
+
+  color:rgba(16,37,27,.66);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.login-form{
+  margin-top:2.5%;
+}
+
+.field{
+  position:relative;
+  margin-bottom:14px;
+}
+
+.field input{
+  width:100%;
+  height:52px;
+
+  border:1px solid rgba(16,37,27,.21);
+  border-radius:14px;
+
+  outline:none;
+
+  background:rgba(250,252,245,.62);
+
+  padding:
+    0
+    48px
+    0
+    54px;
+
+  color:var(--dark);
+
+  font:
+    500 14px
+    Manrope,sans-serif;
+
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.field input::placeholder{
+  color:rgba(16,37,27,.46);
+}
+
+.field input:focus{
+  background:#fff;
+  border-color:var(--green);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(7,60,39,.08);
+}
+
+
+/* =========================================================
+   INPUT ICONS
+   ========================================================= */
+
+.icon{
+  position:absolute;
+
+  left:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:21px;
+  height:21px;
+
+  color:#29483b;
+
+  pointer-events:none;
+}
+
+.mail{
+  border:2px solid currentColor;
+  border-radius:4px;
+}
+
+.mail::before,
+.mail::after{
+  content:"";
+
+  position:absolute;
+
+  top:4px;
+
+  width:11px;
+  height:2px;
+
+  background:currentColor;
+}
+
+.mail::before{
+  left:0;
+  transform:rotate(32deg);
+}
+
+.mail::after{
+  right:0;
+  transform:rotate(-32deg);
+}
+
+.lock{
+  width:17px;
+  height:17px;
+
+  left:20px;
+
+  border:2px solid currentColor;
+  border-radius:3px;
+}
+
+.lock::before{
+  content:"";
+
+  position:absolute;
+
+  left:2px;
+  top:-10px;
+
+  width:9px;
+  height:10px;
+
+  border:
+    2px solid currentColor;
+
+  border-bottom:0;
+
+  border-radius:
+    8px 8px 0 0;
+}
+
+
+/* =========================================================
+   PASSWORD EYE
+   ========================================================= */
+
+.eye{
+  position:absolute;
+
+  right:18px;
+  top:50%;
+
+  width:21px;
+  height:14px;
+
+  transform:
+    translateY(-50%);
+
+  border:
+    2px solid #29483b;
+
+  border-radius:
+    70% 30% 70% 30%;
+
+  rotate:45deg;
+
+  cursor:pointer;
+}
+
+.eye::after{
+  content:"";
+
+  position:absolute;
+
+  width:5px;
+  height:5px;
+
+  left:6px;
+  top:2px;
+
+  border-radius:50%;
+
+  background:#29483b;
+}
+
+
+/* =========================================================
+   REMEMBER / FORGOT
+   ========================================================= */
+
+.options{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  margin:
+    1px
+    1px
+    20px;
+
+  font-size:13px;
+}
+
+.remember{
+  display:flex;
+  align-items:center;
+
+  gap:9px;
+
+  cursor:pointer;
+}
+
+.remember input{
+  width:20px;
+  height:20px;
+
+  margin:0;
+
+  accent-color:
+    var(--green);
+}
+
+.forgot{
+  color:var(--green);
+
+  text-decoration:none;
+
+  font-weight:800;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-btn{
+  width:100%;
+  height:52px;
+
+  border:0;
+  border-radius:13px;
+
+  background:var(--green);
+  color:#fff;
+
+  font:
+    700 14px
+    "Space Mono",monospace;
+
+  letter-spacing:.01em;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 9px 18px
+    rgba(7,60,39,.17);
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.login-btn:hover{
+  background:var(--green2);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 13px 23px
+    rgba(7,60,39,.23);
+}
+
+.login-btn:active{
+  transform:
+    translateY(1px);
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.divider{
+  display:flex;
+  align-items:center;
+
+  gap:13px;
+
+  margin:
+    14px
+    0
+    10px;
+
+  color:
+    rgba(16,37,27,.60);
+
+  font:
+    700 10px
+    "Space Mono",monospace;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+
+  flex:1;
+
+  height:1px;
+
+  background:
+    rgba(16,37,27,.18);
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT
+   Visible light background added
+   ========================================================= */
+
+.signup{
+  width:max-content;
+  max-width:100%;
+
+  margin:
+    10px
+    auto
+    0;
+
+  padding:
+    9px
+    15px;
+
+  text-align:center;
+
+  font-size:13px;
+
+  color:var(--dark);
+
+  background:
+    rgba(255,255,255,.88);
+
+  border:
+    1px solid
+    rgba(16,37,27,.15);
+
+  border-radius:10px;
+
+  box-shadow:
+    0 4px 10px
+    rgba(16,37,27,.08);
+}
+
+.signup a{
+  margin-left:8px;
+
+  color:var(--green);
+
+  font-weight:800;
+
+  text-decoration:none;
+}
+
+.signup a:hover{
+  text-decoration:underline;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .login-card{
+    left:32.5%;
+    width:35%;
+  }
+
+  .logo{
+    width:50px;
+    height:50px;
+  }
+
+  .logo span{
+    font-size:28px;
+  }
+
+  .field input{
+    height:49px;
+  }
+
+  .login-btn{
+    height:49px;
+  }
+
+  .google-btn{
+    height:47px;
+  }
+}
+
+
+@media(max-width:650px){
+
+  body{
+    overflow:auto;
+  }
+
+  .background-art{
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .login-card{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:
+      calc(100% - 32px);
+
+    height:auto;
+
+    min-height:0;
+
+    transform:
+      translate(-50%,-50%);
+
+    padding:
+      28px
+      24px
+      26px;
+
+    border-radius:24px;
+  }
+
+  .welcome{
+    margin-top:30px;
+  }
+
+  .login-form{
+    margin-top:25px;
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =======================================================
+     BACKGROUND
+     ======================================================= -->
+
+<img
+  class="background-art"
+  src="waste2worth-login-art.png"
+  alt=""
+  draggable="false"
+>
+
+<div class="page-grain"></div>
+
+
+<!-- =======================================================
+     REAL LOGIN BOX
+     ======================================================= -->
+
+<main class="login-card">
+
+  <!-- W instead of leaf -->
+  <div class="logo">
+    <span>W</span>
+  </div>
+
+
+  <!-- Brand -->
+  <div class="brand">
+
+    <div class="brand-name">
+      Waste<span class="two">2</span>Worth
+    </div>
+
+    <div class="tagline">
+      SMART WASTE. CLEANER FUTURE.
+    </div>
+
+  </div>
+
+
+  <!-- Welcome -->
+  <section class="welcome">
+
+    <h1>
+      Welcome Back
+    </h1>
+
+    <p>
+      Login to continue your journey<br>
+      towards a cleaner, greener tomorrow.
+    </p>
+
+  </section>
+
+
+  <!-- Login form -->
+  <form
+    class="login-form"
+    id="loginForm"
+  >
+
+    <!-- Email -->
+    <div class="field">
+
+      <span class="icon mail"></span>
+
+      <input
+        id="email"
+        type="text"
+        name="email"
+        placeholder="Email or Phone"
+        autocomplete="username"
+        required
+      >
+
+    </div>
+
+
+    <!-- Password -->
+    <div class="field">
+
+      <span class="icon lock"></span>
+
+      <input
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        required
+      >
+
+      <span
+        class="eye"
+        id="togglePassword"
+        title="Show password"
+      ></span>
+
+    </div>
+
+
+    <!-- Options -->
+    <div class="options">
+
+      <label class="remember">
+
+        <input
+          id="remember"
+          type="checkbox"
+        >
+
+        <span>
+          Remember me
+        </span>
+
+      </label>
+
+
+      <a
+        href="#"
+        class="forgot"
+      >
+        Forgot password?
+      </a>
+
+    </div>
+
+
+    <!-- Login -->
+    <button
+      class="login-btn"
+      type="submit"
+    >
+      LOGIN &amp; START SORTING &nbsp; →
+    </button>
+
+  </form>
+
+
+  <!-- OR -->
+  <div class="divider">
+    <span>OR</span>
+  </div>
+<!-- Create account -->
+  <div class="signup">
+
+    Don't have an account?
+
+    <a href="#">
+      Create one
+    </a>
+
+  </div>
+
+</main>
+
+
+<script>
+/* =========================================================
+   PASSWORD SHOW / HIDE
+   ========================================================= */
+
+const password =
+  document.getElementById("password");
+
+const togglePassword =
+  document.getElementById("togglePassword");
+
+togglePassword.addEventListener(
+  "click",
+  () => {
+
+    const hidden =
+      password.type === "password";
+
+    password.type =
+      hidden
+        ? "text"
+        : "password";
+
+    togglePassword.title =
+      hidden
+        ? "Hide password"
+        : "Show password";
+  }
+);
+
+
+/* =========================================================
+   LOGIN FLOW
+   Landing
+      ↓
+   Login
+      ↓
+   Dashboard
+   ========================================================= */
+
+document
+  .getElementById("loginForm")
+  .addEventListener(
+    "submit",
+    (event) => {
+
+      event.preventDefault();
+
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim();
+
+      const passwordValue =
+        document
+          .getElementById("password")
+          .value;
+
+      if(
+        !email ||
+        !passwordValue
+      ){
+        return;
+      }
+
+      /*
+        login.html is inside:
+        login-page/
+
+        dashboard.html is one
+        folder above it.
+      */
+      window.location.href =
+        "../dashboard.html";
+    }
+  );
+
+
+/* =========================================================
+   GOOGLE LOGIN
+   Placeholder for future OAuth.
+   ========================================================= */
+
+document
+  .getElementById("googleBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      alert(
+        "Google login can be connected here."
+      );
+
+    }
+  );
+</script>
+
+</body>
+</html>
