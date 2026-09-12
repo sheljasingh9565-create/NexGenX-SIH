@@ -221,34 +221,71 @@ pickupDate.min = today;
 // FORM SUBMISSION
 // ===============================
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", async function(event) {
 
     event.preventDefault();
+
+    // Get basic pickup details
+    const societyName =
+        document.getElementById("societyName").value.trim();
+
+    const address =
+        document.getElementById("address").value.trim();
+
+    const pickupDate =
+        document.getElementById("pickupDate").value;
+
+    const pickupTime =
+        document.getElementById("pickupTime").value;
 
 
     // Get all waste rows
     const wasteRows =
         document.querySelectorAll(".waste-row");
 
+    const wasteItems = [];
 
     let totalWeight = 0;
+    let totalValue = 0;
 
 
-    // Calculate total weight
+    // Collect waste details
     wasteRows.forEach(function(row) {
+
+        const wasteSelect =
+            row.querySelector(".wasteType");
 
         const weightInput =
             row.querySelector(".weight");
 
-        totalWeight +=
+        const category =
+            wasteSelect.value;
+
+        const weight =
             Number(weightInput.value) || 0;
+
+        if (category && weight > 0) {
+
+            const rate =
+                rates[category] || 0;
+
+            const value =
+                weight * rate;
+
+            totalWeight += weight;
+            totalValue += value;
+
+            wasteItems.push({
+                category: category,
+                weightKg: weight,
+                ratePerKg: rate,
+                estimatedValue: value
+            });
+        }
     });
 
 
-    // ===============================
-    // VALIDATE TOTAL WEIGHT
-    // ===============================
-
+    // Validate total weight
     if (totalWeight === 0) {
 
         alert(
@@ -269,11 +306,73 @@ form.addEventListener("submit", function(event) {
     }
 
 
-    // ===============================
-    // SHOW SUCCESS MESSAGE
-    // ===============================
+    // Data sent to FastAPI
+    const pickupData = {
 
-    successMessage.style.display = "flex";
+        societyName: societyName,
+
+        address: address,
+
+        pickupDate: pickupDate,
+
+        pickupTime: pickupTime,
+
+        wasteItems: wasteItems,
+
+        totalWeightKg: totalWeight,
+
+        estimatedValue: totalValue
+    };
+
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/api/pickup",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(pickupData)
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.detail || "Pickup request failed."
+            );
+        }
+
+
+        // Backend successfully received pickup
+        successMessage.style.display = "flex";
+
+        console.log(
+            "Pickup saved:",
+            data
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Pickup API Error:",
+            error
+        );
+
+        alert(
+            "Cannot connect to FastAPI server.\n\n" +
+            "Make sure FastAPI is running."
+        );
+    }
 });
 
 

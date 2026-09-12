@@ -33,8 +33,8 @@ const MOCK_DASHBOARD_DATA = {
    No graph image needs to be replaced or regenerated.
    ===================================================================== */
 const API_CONFIG = {
-  summary: "/api/dashboard/summary",
-  analytics: "/api/dashboard/analytics"
+  summary: "http://127.0.0.1:8000/api/dashboard/summary",
+  analytics: "http://127.0.0.1:8000/api/dashboard/analytics"
 };
 
 
@@ -450,19 +450,17 @@ function setupAnalyticsDrawer(){
   });
 }
 
-function setupPickupButton(){
+function setupPickupButton() {
   const button = document.getElementById("requestPickupButton");
-  if(!button) return;
+
+  if (!button) return;
+
   button.addEventListener("click", (event) => {
     event.preventDefault();
-    const target = document.getElementById("pickupNotice");
-    if(target){
-      target.hidden = false;
-      target.scrollIntoView({behavior:"smooth", block:"center"});
-    }
+
+    window.location.href = "../index.html";
   });
 }
-
 /* safeRun: runs one setup function in isolation. If it throws (missing
    element, a future edit, an API shape change, etc.) the error is logged
    instead of propagating — so every OTHER widget on the page still
