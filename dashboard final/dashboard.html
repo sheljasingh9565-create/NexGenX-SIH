@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Waste2Worth personal waste impact dashboard">
+  <title>Waste2Worth — Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800" rel="stylesheet">
+
+  <!-- CSS IS A SEPARATE FILE IN THIS SAME FOLDER -->
+  <link rel="stylesheet" href="./dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+<div class="dashboard-shell">
+
+  <!-- ====================== LEFT SIDEBAR ====================== -->
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="dashboard.html" aria-label="Waste2Worth Dashboard">
+      <div class="brand-w">W</div>
+      <div class="brand-name">Waste<span>2</span>Worth</div>
+      <div class="brand-tagline">Sort Today. A Cleaner Tomorrow.</div>
+    </a>
+
+    <nav class="sidebar-nav" aria-label="Dashboard navigation">
+      <a class="side-link active" href="dashboard.html">
+        <span class="side-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a class="side-link" href="#analytics">
+        <span class="side-icon">▥</span>
+        <span>Analytics</span>
+      </a>
+
+      <a class="side-link" href="#impact">
+        <span class="side-icon">◒</span>
+        <span>Impact</span>
+      </a>
+
+      <!-- Rewards changed to Payment -->
+      <a class="side-link" href="PAYMENT.html">
+        <span class="side-icon">₹</span>
+        <span>Payment</span>
+      </a>
+
+      <a class="side-link" href="#tips">
+        <span class="side-icon">●</span>
+        <span>Tips &amp; Learn</span>
+      </a>
+
+      <a class="side-link" href="#profile">
+        <span class="side-icon">●</span>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Request a Pickup -->
+    <a class="sidebar-ai-button pickup-button" href="#" id="requestPickupButton" aria-label="Request a Pickup">
+      <span class="ai-button-icon pickup-button-icon">♻</span>
+      <span class="ai-button-copy">
+        <small>NEED COLLECTION?</small>
+        <strong>REQUEST A PICKUP</strong>
+      </span>
+      <span class="ai-button-arrow">→</span>
+    </a>
+
+    <!-- Same neon-green button aesthetic as the supplied reference -->
+    <a class="sidebar-ai-button" href="ai-assistant.html">
+      <span class="ai-button-icon">✦</span>
+      <span class="ai-button-copy">
+        <small>NEED HELP?</small>
+        <strong>ASK AI</strong>
+      </span>
+      <span class="ai-button-arrow">→</span>
+    </a>
+  </aside>
+
+  <!-- ====================== MAIN CONTENT ====================== -->
+  <main class="main-content">
+
+    <header class="top-header">
+      <div>
+        <div class="eyebrow">YOUR WASTE JOURNEY · SEPTEMBER 2026</div>
+        <h1>Good morning, <span id="userName">EcoFriend</span>! <span class="wave">👋</span></h1>
+        <p>What would you like to do with your waste today?</p>
+      </div>
+      <div class="header-right">
+        <button class="user-card" id="profileButton" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="user-avatar" aria-hidden="true"><span class="person-head"></span><span class="person-body"></span></span>
+          <span><strong id="headerUserName">User</strong><small>Community Member</small></span>
+        </button>
+        <div class="quote"><span class="quote-line"></span><span>“Cleaner communities<br>brighter tomorrows.”</span></div>
+      </div>
+      <div class="profile-popover" id="profilePopover" hidden>
+        <b>Community Member</b><span id="popoverName">EcoFriend</span>
+        <button type="button" id="profileAction">View profile</button>
+      </div>
+    </header>
+
+    <!-- Simple first-action home -->
+    <section class="welcome-action" aria-label="Start sorting">
+      <div class="welcome-copy">
+        <div class="eyebrow">AI WASTE ASSISTANT</div>
+        <h2>Ready to turn waste into worth?</h2>
+        <p>Upload a photo of your waste and let Waste2Worth identify it, tell you where it belongs, and show its possible value.</p>
+      </div>
+      <a class="start-sorting-btn" href="sorting.html">START SORTING <span>→</span></a>
+    </section>
+
+    <!-- Only the most useful at-a-glance numbers -->
+    <section class="quick-stats" id="impact" aria-label="Your impact">
+      <article class="quick-stat">
+        <div class="quick-icon">♻</div>
+        <div><span>WASTE SORTED</span><strong><b id="segregatedKpi">95</b> kg</strong><small>Keep separating responsibly</small></div>
+      </article>
+      <article class="quick-stat earning">
+        <div class="quick-icon">₹</div>
+        <div><span>MONEY EARNED</span><strong>₹<b id="earnedKpi">9527</b></strong><small>From recyclable waste</small></div>
+      </article>
+      <article class="quick-stat">
+        <div class="quick-icon">🌱</div>
+        <div><span>ENVIRONMENTAL IMPACT</span><strong><b id="co2Kpi">210</b> kg</strong><small>Estimated CO₂ saved</small></div>
+      </article>
+    </section>
+
+    <section class="home-grid">
+      <article class="panel recent-home" id="recent">
+        <div class="panel-header compact">
+          <div><div class="eyebrow">YOUR LATEST ACTIONS</div><h2>Recent Activity</h2></div>
+          <button class="text-button" id="historyButton" type="button">View all →</button>
+        </div>
+        <div class="activity-list">
+          <div class="activity-row"><span class="activity-icon bottle">♢</span><div><strong>Plastic bottles</strong><small>Recyclable</small></div><b>5 kg</b><time>2 hours ago</time></div>
+          <div class="activity-row"><span class="activity-icon paper">▤</span><div><strong>Paper &amp; cardboard</strong><small>Dry waste</small></div><b>8 kg</b><time>1 day ago</time></div>
+          <div class="activity-row"><span class="activity-icon food">●</span><div><strong>Food waste</strong><small>Wet waste</small></div><b>3 kg</b><time>2 days ago</time></div>
+        </div>
+      </article>
+
+      <article class="panel smart-home tip-panel" id="tips">
+        <div class="tip-art">☼</div>
+        <div class="tip-copy"><div class="eyebrow">SMART TIP</div><h2>Small action, big difference.</h2><p>Rinse containers before recycling to keep materials usable and easier to process.</p><button class="tip-button" id="tipButton" type="button">Got it!</button></div>
+      </article>
+    </section>
+
+    <!-- Detailed analytics is intentionally collapsed for normal users. -->
+    <section class="analytics-drawer" id="analytics">
+      <button class="analytics-toggle" id="analyticsToggle" type="button" aria-expanded="false" aria-controls="analyticsDetails">
+        <span><span class="drawer-icon">▥</span><span><strong>View detailed analytics</strong><small>Open your monthly waste and earnings graphs</small></span></span>
+        <span class="drawer-arrow" id="drawerArrow">⌄</span>
+      </button>
+
+      <div class="analytics-details" id="analyticsDetails" aria-hidden="true">
+        <article class="panel analytics-panel">
+          <div class="panel-header">
+            <div><div class="eyebrow">YOUR ACTIVITY</div><h2>Monthly Analytics</h2><p>Choose a graph to explore your progress month by month.</p></div>
+            <select class="chart-select" id="chartSelect" aria-label="Choose analytics graph">
+              <option value="wasteSegregated">Waste Segregated</option>
+              <option value="incomeComparison">Expected vs Actual Income</option>
+              <option value="recyclableWaste">Recyclable Waste Segregated</option>
+            </select>
+          </div>
+
+          <div class="chart-container chart-canvas-wrap">
+            <canvas id="analyticsCanvas" aria-label="Monthly analytics chart"></canvas>
+            <div class="chart-loading" id="chartLoading" hidden>Loading graph…</div>
+          </div>
+          <div class="chart-meta"><span id="chartUnitLabel">MONTHLY · KG</span><span id="chartStatus">Hover a bar to see the exact value.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="pickup-notice panel" id="pickupNotice" hidden aria-live="polite">
+      <strong>Pickup request</strong>
+      <span>Pickup scheduling will open here when the collection API is connected.</span>
+      <button type="button" id="closePickupNotice">Close</button>
+    </section>
+
+    <footer class="footer"><span class="footer-mark"></span><span>Turning Waste Into Opportunity</span><span class="footer-links">People <b>•</b> Planet <b>•</b> Progress</span></footer>
+  </main>
+</div>
+
+<!-- JS IS A SEPARATE FILE IN THIS SAME FOLDER -->
+<script src="./dashboard.js"></script>
+</body>
+</html>
