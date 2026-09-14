@@ -33,8 +33,8 @@ const MOCK_DASHBOARD_DATA = {
    No graph image needs to be replaced or regenerated.
    ===================================================================== */
 const API_CONFIG = {
-  summary: "http://127.0.0.1:8000/api/dashboard/summary",
-  analytics: "http://127.0.0.1:8000/api/dashboard/analytics"
+  summary: "https://waste2worth-p8de.onrender.com/api/dashboard/summary",
+  analytics: "https://waste2worth-p8de.onrender.com/api/dashboard/analytics"
 };
 
 
