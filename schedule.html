@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Schedule Pickup | Waste2Worth</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>♻</span> Waste2Worth
+        </div>
+
+        <a href="index.html" class="back-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTAINER ================= -->
+
+    <main class="container">
+
+        <!-- ================= LEFT SECTION ================= -->
+
+        <section class="form-section">
+
+            <div class="heading">
+
+                <p class="small-title">
+                    WASTE2WORTH
+                </p>
+
+                <h1>
+                    Schedule a Pickup
+                </h1>
+
+                <p>
+                    Enter your society details and schedule a convenient
+                    waste collection time.
+                </p>
+
+            </div>
+
+
+            <form id="pickupForm">
+
+                <!-- ================= SOCIETY DETAILS ================= -->
+
+                <div class="form-card">
+
+                    <h2>
+                        Society Details
+                    </h2>
+
+                    <div class="input-group">
+
+                        <label for="societyName">
+                            Society Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="societyName"
+                            placeholder="Enter society name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="address">
+                            Pickup Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            placeholder="Enter complete pickup address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= WASTE DETAILS ================= -->
+
+                <div class="form-card">
+
+                    <h2>
+                        Waste Details
+                    </h2>
+
+
+                    <div id="wasteContainer">
+
+                        <!-- FIRST WASTE ROW -->
+
+                        <div class="row waste-row">
+
+                            <div class="input-group">
+
+                                <label>
+                                    Waste Category
+                                </label>
+
+                                <select
+                                    class="wasteType"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select category
+                                    </option>
+
+                                    <option value="plastic">
+                                        Plastic
+                                    </option>
+
+                                    <option value="paper">
+                                        Paper
+                                    </option>
+
+                                    <option value="metal">
+                                        Metal
+                                    </option>
+
+                                    <option value="organic">
+                                        Organic
+                                    </option>
+
+                                    <option value="mixed-recyclable">
+                                        Other Recyclable
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    Estimated Weight (kg)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    class="weight"
+                                    placeholder="Minimum 5 kg"
+                                    min="5"
+                                    step="0.1"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ADD ANOTHER WASTE -->
+
+                    <button
+                        type="button"
+                        id="addWasteBtn"
+                        class="add-waste-btn"
+                    >
+                        + Add Another Waste
+                    </button>
+
+
+                    <p class="note">
+                        * Final weight and category will be physically
+                        verified by the collector during pickup.
+                    </p>
+
+                </div>
+
+
+                <!-- ================= PICKUP SCHEDULE ================= -->
+
+                <div class="form-card">
+
+                    <h2>
+                        Pickup Schedule
+                    </h2>
+
+
+                    <div class="row">
+
+                        <div class="input-group">
+
+                            <label for="pickupDate">
+                                Pickup Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="pickupDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="pickupTime">
+                                Pickup Time
+                            </label>
+
+                            <select
+                                id="pickupTime"
+                                required
+                            >
+
+                                <option value="">
+                                    Select time
+                                </option>
+
+                                <option>
+                                    9:00 AM - 10:00 AM
+                                </option>
+
+                                <option>
+                                    10:00 AM - 11:00 AM
+                                </option>
+
+                                <option>
+                                    11:00 AM - 12:00 PM
+                                </option>
+
+                                <option>
+                                    2:00 PM - 3:00 PM
+                                </option>
+
+                                <option>
+                                    4:00 PM - 5:00 PM
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= CONFIRM BUTTON ================= -->
+
+                <button
+                    type="submit"
+                    class="confirm-btn"
+                >
+                    Confirm Pickup →
+                </button>
+
+
+                <!-- ================= PAYMENT RECEIPT ================= -->
+
+                <div class="payment-receipt-box">
+
+                    <div class="payment-receipt-content">
+
+                        <span class="payment-label">
+                            PAYMENT RECEIPT
+                        </span>
+
+                        <h3>
+                            Check Your Earnings
+                        </h3>
+
+                        <p>
+                            View your estimated waste value and
+                            payment details.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        onclick="goToPayment()"
+                    >
+                        View Receipt →
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= RIGHT SUMMARY ================= -->
+
+        <aside class="summary">
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    ♻
+                </div>
+
+
+                <h2>
+                    Pickup Summary
+                </h2>
+
+
+                <p class="summary-subtitle">
+                    Your estimated waste value
+                </p>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Waste Category
+                    </span>
+
+                    <strong id="summaryWaste">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Estimated Weight
+                    </span>
+
+                    <strong>
+
+                        <span id="summaryWeight">
+                            0
+                        </span>
+
+                        kg
+
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-item">
+
+                    <span>
+                        Example Rate
+                    </span>
+
+                    <strong>
+
+                        ₹<span id="summaryRate">
+                            0
+                        </span>/kg
+
+                    </strong>
+
+                </div>
+
+
+                <!-- VALUE BOX -->
+
+                <div class="value-box">
+
+                    <span>
+                        Estimated Value
+                    </span>
+
+                    <h3>
+                        ₹<span id="estimatedValue">
+                            0
+                        </span>
+                    </h3>
+
+                    <small>
+                        Final value depends on verified weight
+                        and applicable material rate.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= HOW IT WORKS ================= -->
+
+            <div class="info-card">
+
+                <h3>
+                    How it works
+                </h3>
+
+
+                <div class="step">
+
+                    <span>
+                        1
+                    </span>
+
+                    <p>
+                        Schedule your pickup
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        2
+                    </span>
+
+                    <p>
+                        Collector verifies and weighs waste
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        3
+                    </span>
+
+                    <p>
+                        Waste is aggregated for bulk selling
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        4
+                    </span>
+
+                    <p>
+                        Value is credited to the society fund
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- ================= WASTE JOURNEY ================= -->
+
+    <section class="waste-journey">
+
+
+        <div class="journey-item">
+
+            <div class="journey-icon waste-icon">
+                🗑️
+            </div>
+
+            <h3>
+                Waste
+            </h3>
+
+            <p>
+                Segregated at source
+            </p>
+
+        </div>
+
+
+        <div class="journey-arrow">
+            →
+        </div>
+
+
+        <div class="journey-item">
+
+            <div class="journey-icon recycle-icon">
+                ♻️
+            </div>
+
+            <h3>
+                Collect & Recycle
+            </h3>
+
+            <p>
+                Verified and aggregated
+            </p>
+
+        </div>
+
+
+        <div class="journey-arrow">
+            →
+        </div>
+
+
+        <div class="journey-item">
+
+            <div class="journey-icon money-icon">
+                ₹
+            </div>
+
+            <h3>
+                Generate Value
+            </h3>
+
+            <p>
+                Value reaches society fund
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SUCCESS POPUP ================= -->
+
+    <div
+        id="successMessage"
+        class="success-message"
+    >
+
+        <div class="success-box">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <h2>
+                Pickup Scheduled!
+            </h2>
+
+            <p>
+                Your pickup request has been successfully submitted.
+            </p>
+
+            <button onclick="closeSuccess()">
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
