@@ -1,6 +1,22 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import os
+from dotenv import load_dotenv
+from supabase import create_client
+
+load_dotenv()
+
+supabase = create_client(
+    os.getenv("SUPABASE_URL"),
+    os.getenv("SUPABASE_KEY")
+)
+print("Supabase connected:", supabase is not None)
+try:
+    result = supabase.table("waste_categories").select("id").limit(1).execute()
+    print("Supabase database connected successfully!")
+except Exception as e:
+    print("Supabase database error:", e)
 
 app = FastAPI(title="Waste2Worth API")
 
@@ -185,3 +201,130 @@ def create_pickup(data: PickupRequest):
         "message": "Pickup request submitted successfully!",
         "pickup": data
     }
+
+# -------------------------
+# WASTE CATEGORIES
+# -------------------------
+
+@app.get("/api/waste-categories")
+def get_waste_categories():
+    result = supabase.table("waste_categories").select("*").execute()
+
+    return {
+        "success": True,
+        "categories": result.data
+    }
+
+# -------------------------
+# WASTE PRICES
+# -------------------------
+
+@app.get("/api/waste-prices")
+def get_waste_prices():
+    result = supabase.table("waste_prices").select("*").execute()
+
+    return {
+        "success": True,
+        "prices": result.data
+    }
+# -------------------------
+# ORGANIZATIONS
+# -------------------------
+
+@app.get("/api/organizations")
+def get_organizations():
+    result = supabase.table("organizations").select("*").execute()
+
+    return {
+        "success": True,
+        "organizations": result.data
+    }
+# -------------------------
+# LOCATIONS
+# -------------------------
+
+@app.get("/api/locations")
+def get_locations():
+    result = supabase.table("locations").select("*").execute()
+
+    return {
+        "success": True,
+        "locations": result.data
+    }
+# -------------------------
+# ORGANIZATION WASTE TYPES
+# -------------------------
+
+@app.get("/api/organization-waste-types")
+def get_organization_waste_types():
+    result = supabase.table("organization_waste_types").select("*").execute()
+
+    return {
+        "success": True,
+        "organization_waste_types": result.data
+    }
+
+# -------------------------
+# WASTE RECORDS
+# -------------------------
+
+@app.get("/api/waste-records")
+def get_waste_records():
+    result = supabase.table("waste_records").select("*").execute()
+
+    return {
+        "success": True,
+        "waste_records": result.data
+    }
+
+# -------------------------
+# COLLECTION REQUESTS
+# -------------------------
+
+@app.get("/api/collection-requests")
+def get_collection_requests():
+    result = supabase.table("collection_requests").select("*").execute()
+
+    return {
+        "success": True,
+        "collection_requests": result.data
+    }
+
+# -------------------------
+# RECYCLING TRANSACTIONS
+# -------------------------
+
+@app.get("/api/recycling-transactions")
+def get_recycling_transactions():
+    result = supabase.table("recycling_transactions").select("*").execute()
+
+    return {
+        "success": True,
+        "recycling_transactions": result.data
+    }
+
+# -------------------------
+# REWARDS
+# -------------------------
+
+@app.get("/api/rewards")
+def get_rewards():
+    result = supabase.table("rewards").select("*").execute()
+
+    return {
+        "success": True,
+        "rewards": result.data
+    }
+# -------------------------
+# SUPPORT REQUESTS
+# -------------------------
+
+@app.get("/api/support-requests")
+def get_support_requests():
+    result = supabase.table("support_requests").select("*").execute()
+
+    return {
+        "success": True,
+        "support_requests": result.data
+    }
+
